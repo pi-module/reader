@@ -17,6 +17,10 @@ return array(
             'name' => 'admin'
         ),
         array(
+            'title'  => _a('Cron'),
+            'name'   => 'cron'
+        ),
+        array(
             'title' => _a('View'),
             'name' => 'view'
         ),
@@ -34,6 +38,14 @@ return array(
             'edit' => 'text',
             'filter' => 'number_int',
             'value' => 10
+        ),
+        // Cron
+        'cron_password' => array(
+            'category'     => 'cron',
+            'title'        => _a('Cron password'),
+            'edit'         => 'text',
+            'filter'       => 'string',
+            'value'        => md5(rand()),
         ),
         // View
         'view_perpage' => array(

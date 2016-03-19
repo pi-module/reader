@@ -27,7 +27,7 @@ class Reader extends Standard
     );
 
     protected $controllerList = array(
-        'index', 'feed'
+        'index', 'feed', 'parse'
     );
 
     /**
@@ -56,6 +56,12 @@ class Reader extends Standard
             switch ($matches['controller']) {
                 case 'feed':
                     $matches['slug'] = $this->decode($parts[0]);
+                    break;
+
+                case 'parse':
+                    if (isset($parts[1]) && $parts[1] == 'password' && !empty($parts[2])) {
+                        $matches['password'] = $this->decode($parts[2]);
+                    }
                     break;
             }
         }

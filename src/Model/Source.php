@@ -10,18 +10,23 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-namespace Module\Reader\Controller\Admin;
+namespace Module\Reader\Model;
 
-use Pi;
-use Pi\Mvc\Controller\ActionController;
+use Pi\Application\Model\Model;
 
-class IndexController extends ActionController
+class Source extends Model
 {
-    public function indexAction()
-    {
-        return $this->redirect()->toRoute('', array(
-            'controller' => 'source',
-            'action' => 'index',
-        ));
-    }
+    /**
+     * {@inheritDoc}
+     */
+    protected $columns = array(
+        'id',
+        'title',
+        'link',
+        'time_create',
+        'time_parse_last',
+        'time_parse_period',
+        'status',
+        'extra',
+    );
 }

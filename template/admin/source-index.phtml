@@ -1,0 +1,52 @@
+<?php $this->css($this->assetModule('css/admin.css')); ?>
+<div class="clearfix">
+    <div class="alert alert-danger">
+        <h2><?php _e('Setup guide'); ?></h2>
+        <p><?php _e('For use feed reader system, first you need setup some rss feed url as source, after that setup cron job on your server by below link or comment to parse feed urls and get new entry ! each feed have update period, than you can setup cron time by minimum update period'); ?></p>
+    </div>
+    <div class="well">
+        <div class="form-group">
+            <label for="cronUrl"><?php _e('Cron URL'); ?></label>
+            <input type="email" class="form-control" id="cronUrl" value="<?php echo $this->escape($cronUrl); ?>">
+        </div>
+        <div class="form-group">
+            <label for="cronUrl"><?php _e('Cron Command'); ?></label>
+            <input type="email" class="form-control" id="cronCommand" value="GET <?php echo $this->escape($cronUrl); ?>">
+        </div>
+    </div>
+    <p>
+        <a class="btn btn-primary" title="<?php _e('Add source'); ?>"
+           href="<?php echo $this->url('', array('controller' => 'source', 'action' => 'update')); ?>"><i
+                class="fa fa-folder-open"></i> <?php _e('Add source'); ?></a>
+    </p>
+    <h3><?php _e('List of sources'); ?></h3>
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th><?php _e('ID'); ?></th>
+            <th><?php _e('Title'); ?></th>
+            <th><?php _e('Action'); ?></th>
+        </tr>
+        <?php foreach ($list as $source) { ?>
+            <?php
+            if ($source['status'] == 1) {
+                $labelIdClass = 'label-success';
+            } else {
+                $labelIdClass = 'label-warning';
+            }
+            ?>
+            <tr>
+                <td>
+                    <span class="label <?php echo $labelIdClass; ?>">
+                        <?php echo $this->escape($source['id']); ?>
+                    </span>
+                </td>
+                <td><?php echo $this->escape($source['title']); ?></td>
+                <td>
+                    <a class="btn btn-primary" title="<?php _e('Edit'); ?>"
+                       href="<?php echo $this->url('', array('action' => 'update', 'id' => $source['id'])); ?>"><i
+                            class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+</div>

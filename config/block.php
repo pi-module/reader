@@ -17,13 +17,6 @@ return array(
         'render' => array('block', 'recentFeed'),
         'template' => 'recent-feed',
         'config' => array(
-            'topic-id' => array(
-                'title' => _a('Category'),
-                'description' => '',
-                'edit' => 'Module\News\Form\Element\Topic',
-                'filter' => 'string',
-                'value' => 0,
-            ),
             'number' => array(
                 'title' => _a('Number'),
                 'description' => '',
@@ -38,8 +31,8 @@ return array(
                 'filter' => 'number_int',
                 'value' => 1,
             ),
-            'show-topic' => array(
-                'title' => _a('Show topic'),
+            'show-source' => array(
+                'title' => _a('Show source'),
                 'description' => '',
                 'edit' => 'checkbox',
                 'filter' => 'number_int',
@@ -52,8 +45,8 @@ return array(
                 'filter' => 'number_int',
                 'value' => 1,
             ),
-            'show-summary' => array(
-                'title' => _a('Show summary'),
+            'show-description' => array(
+                'title' => _a('Show description'),
                 'description' => '',
                 'edit' => 'checkbox',
                 'filter' => 'number_int',

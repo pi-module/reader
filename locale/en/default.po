@@ -1,0 +1,241 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: support\n"
+"POT-Creation-Date: 2016-03-21 14:04+0430\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: src/Api/Parse.php:32
+msgid "All Feed sources update successfully."
+msgstr ""
+
+#: src/Api/Parse.php:60
+#, php-format
+msgid "Exception caught importing feed: %s"
+msgstr ""
+
+#: src/Controller/Admin/FeedController.php:85
+#, php-format
+msgid "%s set status successfully"
+msgstr ""
+
+#: src/Controller/Admin/FeedController.php:90
+#, php-format
+msgid "Error in set status for %s feed"
+msgstr ""
+
+#: src/Controller/Admin/FeedController.php:96
+msgid "Please select feed"
+msgstr ""
+
+#: src/Controller/Admin/SourceController.php:49
+#, php-format
+msgid "Delayed %s min"
+msgstr ""
+
+#: src/Controller/Admin/SourceController.php:51
+#, php-format
+msgid "Delayed %s hours"
+msgstr ""
+
+#: src/Controller/Admin/SourceController.php:53
+#, php-format
+msgid "Delayed %s days"
+msgstr ""
+
+#: src/Controller/Admin/SourceController.php:85
+msgid "Source data saved successfully."
+msgstr ""
+
+#: src/Controller/Admin/SourceController.php:96
+#: template/admin/source-index.phtml:25 template/admin/source-index.phtml:27
+msgid "Add source"
+msgstr ""
+
+#: src/Controller/Front/FeedController.php:40
+msgid "The feed not found."
+msgstr ""
+
+#: src/Controller/Front/ParseController.php:35
+msgid "Error : password not true!"
+msgstr ""
+
+#: src/Form/SourceForm.php:47 template/admin/feed-index.phtml:15
+#: template/admin/source-index.phtml:38
+msgid "Title"
+msgstr ""
+
+#: src/Form/SourceForm.php:60
+msgid "Feed link"
+msgstr ""
+
+#: src/Form/SourceForm.php:74
+msgid "Parse period"
+msgstr ""
+
+#: src/Form/SourceForm.php:76
+msgid "1 min"
+msgstr ""
+
+#: src/Form/SourceForm.php:77
+msgid "5 min"
+msgstr ""
+
+#: src/Form/SourceForm.php:78
+msgid "10 min"
+msgstr ""
+
+#: src/Form/SourceForm.php:79
+msgid "15 min"
+msgstr ""
+
+#: src/Form/SourceForm.php:80
+msgid "30 min"
+msgstr ""
+
+#: src/Form/SourceForm.php:81
+msgid "1 hour"
+msgstr ""
+
+#: src/Form/SourceForm.php:82
+msgid "2 hours"
+msgstr ""
+
+#: src/Form/SourceForm.php:83
+msgid "3 hours"
+msgstr ""
+
+#: src/Form/SourceForm.php:84
+msgid "4 hours"
+msgstr ""
+
+#: src/Form/SourceForm.php:85
+msgid "5 hours"
+msgstr ""
+
+#: src/Form/SourceForm.php:86
+msgid "6 hours"
+msgstr ""
+
+#: src/Form/SourceForm.php:87
+msgid "12 hours"
+msgstr ""
+
+#: src/Form/SourceForm.php:88
+msgid "1 day"
+msgstr ""
+
+#: src/Form/SourceForm.php:101
+msgid "Status"
+msgstr ""
+
+#: src/Form/SourceForm.php:103 template/admin/feed-index.phtml:63
+msgid "Published"
+msgstr ""
+
+#: src/Form/SourceForm.php:104 template/admin/feed-index.phtml:64
+msgid "Pending review"
+msgstr ""
+
+#: src/Form/SourceForm.php:105
+msgid "Draft"
+msgstr ""
+
+#: src/Form/SourceForm.php:106
+msgid "Private"
+msgstr ""
+
+#: src/Form/SourceForm.php:107
+msgid "Delete"
+msgstr ""
+
+#: src/Form/SourceForm.php:120
+msgid "Submit"
+msgstr ""
+
+#: template/admin/feed-index.phtml:10 template/front/feed-list.phtml:4
+msgid "List of feeds"
+msgstr ""
+
+#: template/admin/feed-index.phtml:13 template/admin/source-index.phtml:37
+msgid "ID"
+msgstr ""
+
+#: template/admin/feed-index.phtml:14
+msgid "Source"
+msgstr ""
+
+#: template/admin/feed-index.phtml:16 template/admin/source-index.phtml:40
+msgid "Action"
+msgstr ""
+
+#: template/admin/feed-index.phtml:35 template/admin/feed-index.phtml:37
+msgid "View"
+msgstr ""
+
+#: template/admin/feed-index.phtml:65
+msgid "Trash"
+msgstr ""
+
+#: template/admin/feed-index.phtml:71
+msgid "Update feed status in process"
+msgstr ""
+
+#: template/admin/source-index.phtml:11
+msgid "Setup guide"
+msgstr ""
+
+#: template/admin/source-index.phtml:12
+msgid ""
+"For use feed reader system, first you need setup some rss feed url as "
+"source, after that setup cron job on your server by below link or comment to "
+"parse feed urls and get new entry ! each feed have update period, than you "
+"can setup cron time by minimum update period"
+msgstr ""
+
+#: template/admin/source-index.phtml:16
+msgid "Cron URL"
+msgstr ""
+
+#: template/admin/source-index.phtml:20
+msgid "Cron Command"
+msgstr ""
+
+#: template/admin/source-index.phtml:31
+msgid "Update all feeds"
+msgstr ""
+
+#: template/admin/source-index.phtml:34
+msgid "List of sources"
+msgstr ""
+
+#: template/admin/source-index.phtml:39
+msgid "Last update"
+msgstr ""
+
+#: template/admin/source-index.phtml:60
+msgid "Never"
+msgstr ""
+
+#: template/admin/source-index.phtml:63
+msgid "Updated"
+msgstr ""
+
+#: template/admin/source-index.phtml:72 template/admin/source-index.phtml:74
+msgid "Edit"
+msgstr ""
+
+#: template/admin/source-index.phtml:83
+msgid "Update feeds in process"
+msgstr ""

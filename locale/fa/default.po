@@ -1,0 +1,538 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: support\n"
+"POT-Creation-Date: 2016-03-21 14:08+0430\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: src/Api/Parse.php:32
+msgid "All Feed sources update successfully."
+msgstr "تمام خوارک ها از سایت های منبع به روز شد"
+
+#: src/Api/Parse.php:60
+#, php-format
+msgid "Exception caught importing feed: %s"
+msgstr "در هنگام به روز رسانی خوارک ها ، خطای زیر رخ داده است : %s"
+
+#: src/Controller/Admin/FeedController.php:85
+#, php-format
+msgid "%s set status successfully"
+msgstr "وضعیت %s با موفقیت تغییر کرد"
+
+#: src/Controller/Admin/FeedController.php:90
+#, php-format
+msgid "Error in set status for %s feed"
+msgstr "خطا در تغییر وضعیت %s"
+
+#: src/Controller/Admin/FeedController.php:96
+msgid "Please select feed"
+msgstr "لطفا یک خوراک انتخاب کنید"
+
+#: src/Controller/Admin/SourceController.php:49
+#, php-format
+msgid "Delayed %s min"
+msgstr "%s دقیقه تاخیر"
+
+#: src/Controller/Admin/SourceController.php:51
+#, php-format
+msgid "Delayed %s hours"
+msgstr "%s ساعت تاخیر "
+
+#: src/Controller/Admin/SourceController.php:53
+#, php-format
+msgid "Delayed %s days"
+msgstr "%s روز تاخیر"
+
+#: src/Controller/Admin/SourceController.php:85
+msgid "Source data saved successfully."
+msgstr "اطلاعات منبع با موفقیت به روز شد"
+
+#: src/Controller/Admin/SourceController.php:96
+#: template/admin/source-index.phtml:25 template/admin/source-index.phtml:27
+msgid "Add source"
+msgstr "منبع جدید"
+
+#: src/Controller/Front/FeedController.php:40
+msgid "The feed not found."
+msgstr "خوارک یافت نشد."
+
+#: src/Controller/Front/ParseController.php:35
+msgid "Error : password not true!"
+msgstr "خطا : واژه رمز صحیح نیست"
+
+#: src/Form/SourceForm.php:47 template/admin/feed-index.phtml:15
+#: template/admin/source-index.phtml:38
+msgid "Title"
+msgstr "عنوان"
+
+#: src/Form/SourceForm.php:60
+msgid "Feed link"
+msgstr "پیوند خوارک"
+
+#: src/Form/SourceForm.php:74
+msgid "Parse period"
+msgstr "بازه زمانی به روز رسانی"
+
+#: src/Form/SourceForm.php:76
+msgid "1 min"
+msgstr "۱ دقیقه"
+
+#: src/Form/SourceForm.php:77
+msgid "5 min"
+msgstr "۵ دقیقه"
+
+#: src/Form/SourceForm.php:78
+msgid "10 min"
+msgstr "۱۰ دقیقه"
+
+#: src/Form/SourceForm.php:79
+msgid "15 min"
+msgstr "۱۵ دقیقه"
+
+#: src/Form/SourceForm.php:80
+msgid "30 min"
+msgstr "۳۰ دقیقه"
+
+#: src/Form/SourceForm.php:81
+msgid "1 hour"
+msgstr "۱ ساعت"
+
+#: src/Form/SourceForm.php:82
+msgid "2 hours"
+msgstr "۲ ساعت"
+
+#: src/Form/SourceForm.php:83
+msgid "3 hours"
+msgstr "۳ ساعت"
+
+#: src/Form/SourceForm.php:84
+msgid "4 hours"
+msgstr "۴ ساعت"
+
+#: src/Form/SourceForm.php:85
+msgid "5 hours"
+msgstr "۵ ساعت"
+
+#: src/Form/SourceForm.php:86
+msgid "6 hours"
+msgstr "۶ ساعت"
+
+#: src/Form/SourceForm.php:87
+msgid "12 hours"
+msgstr "۱۲ ساعت"
+
+#: src/Form/SourceForm.php:88
+msgid "1 day"
+msgstr "۱ روز"
+
+#: src/Form/SourceForm.php:101
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/Form/SourceForm.php:103 template/admin/feed-index.phtml:63
+msgid "Published"
+msgstr "منتشر شده"
+
+#: src/Form/SourceForm.php:104 template/admin/feed-index.phtml:64
+msgid "Pending review"
+msgstr "در انتظار تایید"
+
+#: src/Form/SourceForm.php:105
+msgid "Draft"
+msgstr "پیش نویس"
+
+#: src/Form/SourceForm.php:106
+msgid "Private"
+msgstr "خصوصی"
+
+#: src/Form/SourceForm.php:107
+msgid "Delete"
+msgstr "حذف"
+
+#: src/Form/SourceForm.php:120
+msgid "Submit"
+msgstr "ارسال"
+
+#: template/admin/feed-index.phtml:10 template/front/feed-list.phtml:4
+msgid "List of feeds"
+msgstr "فهرست خوارک ها"
+
+#: template/admin/feed-index.phtml:13 template/admin/source-index.phtml:37
+msgid "ID"
+msgstr "شناسه"
+
+#: template/admin/feed-index.phtml:14
+msgid "Source"
+msgstr "منبع"
+
+#: template/admin/feed-index.phtml:16 template/admin/source-index.phtml:40
+msgid "Action"
+msgstr "عملکرد"
+
+#: template/admin/feed-index.phtml:35 template/admin/feed-index.phtml:37
+msgid "View"
+msgstr "نمایش"
+
+#: template/admin/feed-index.phtml:65
+msgid "Trash"
+msgstr "سطل آشغال"
+
+#: template/admin/feed-index.phtml:71
+msgid "Update feed status in process"
+msgstr "به روز رسانی وضعیت خوارک در حال انجام است"
+
+#: template/admin/source-index.phtml:11
+msgid "Setup guide"
+msgstr "راهنمای راه اندازی و استفاده"
+
+#: template/admin/source-index.phtml:12
+msgid ""
+"For use feed reader system, first you need setup some rss feed url as "
+"source, after that setup cron job on your server by below link or comment to "
+"parse feed urls and get new entry ! each feed have update period, than you "
+"can setup cron time by minimum update period"
+msgstr ""
+"برای استفاده از سیستم خوارک خوان، ابتدا لازم است چند پیوند RSS را در به "
+"عنوان منبع در سیستم درج نمایید. سپس بر روی سرور تنظیمات مربوط به کرون جاب را "
+"با توجه به پیوند یا کامنت درج شده در این صفحه انجام دهید تا پرداز آدرس منابع "
+"در زمان های مشخص شده از طرف شما انجام شود. هر منبع دارای یک بازه زمانی برای "
+"به روز رسانی است ، بهتر است زمان کرون جاب را بر اساس کمترین بازه زمانی درج "
+"شده در این سیستم ، تنظیم نمایید."
+
+#: template/admin/source-index.phtml:16
+msgid "Cron URL"
+msgstr "پیوند کرون جاب"
+
+#: template/admin/source-index.phtml:20
+msgid "Cron Command"
+msgstr "کامنت کرون جاب"
+
+#: template/admin/source-index.phtml:31
+msgid "Update all feeds"
+msgstr "به روز رسانی همه خوراک ها"
+
+#: template/admin/source-index.phtml:34
+msgid "List of sources"
+msgstr "فهرست منابع"
+
+#: template/admin/source-index.phtml:39
+msgid "Last update"
+msgstr "آخریت به روز رسانی"
+
+#: template/admin/source-index.phtml:60
+msgid "Never"
+msgstr "هرگز"
+
+#: template/admin/source-index.phtml:63
+msgid "Updated"
+msgstr "به روز"
+
+#: template/admin/source-index.phtml:72 template/admin/source-index.phtml:74
+msgid "Edit"
+msgstr "ویرایش"
+
+#: template/admin/source-index.phtml:83
+msgid "Update feeds in process"
+msgstr "به روز رسانی خوراک ها در حال انجام است"
+
+#~ msgid "Manage events"
+#~ msgstr "مدیریت رویداد ها"
+
+#~ msgid "List of orders"
+#~ msgstr "فهرست سفارش ها"
+
+#~ msgid "Add / edit event"
+#~ msgstr "ثبت / ویرایش رویداد"
+
+#~ msgid "this event is free!"
+#~ msgstr "این رویداد رایگان است !"
+
+#~ msgid "View filtered events"
+#~ msgstr "نمایش رویداد های فیلتر شده"
+
+#~ msgid "Not valid"
+#~ msgstr "صحیح نیست\t"
+
+#~ msgid "Not set"
+#~ msgstr "تنظیم نشدع"
+
+#~ msgid "Error on save story data on news module."
+#~ msgstr "خطا در ثبت اطلاعات در ماژول اخبار"
+
+#~ msgid "Event data saved successfully."
+#~ msgstr "ویرایش رویداد با موفقیت انجام شد"
+
+#~ msgid "Add event"
+#~ msgstr "رویداد جدید"
+
+#~ msgid "Guide events imported to event module"
+#~ msgstr "رویداد های ماژول معرفی اماکن به ماژول رویداد منتقل شد"
+
+#~ msgid "Guide event table is empty"
+#~ msgstr "جدول رویداد های ماژول معرفی اماکن خالی است"
+
+#~ msgid "Guide module not installed"
+#~ msgstr "ماژول معرفی اماکن نصب نشده است"
+
+#~ msgid "Event feed"
+#~ msgstr "خوراک رویداد ها"
+
+#~ msgid "Recent events"
+#~ msgstr "رویداد های جدید"
+
+#~ msgid "The category not found."
+#~ msgstr "شاخه یافت نشد"
+
+#~ msgid "Event list on %s"
+#~ msgstr "فهرست رویداد ها در %s"
+
+#~ msgid "The event not found."
+#~ msgstr "رویداد یافت نشد"
+
+#~ msgid "Event list"
+#~ msgstr "فهرست رویداد ها"
+
+#~ msgid "Owner dashboard is inactive"
+#~ msgstr "داشبورد سازنده رویداد غیر فعال است"
+
+#~ msgid "List of your events"
+#~ msgstr "فهرست رویداد های ثبت شده توسط شما"
+
+#~ msgid "Search"
+#~ msgstr "جستجو"
+
+#~ msgid "Its not your event"
+#~ msgstr "این رویداد متعلق به شما نیست"
+
+#~ msgid "Add event to %s"
+#~ msgstr "درج رویداد در %s"
+
+#~ msgid "So sorry, At this moment order is inactive"
+#~ msgstr "متاسفانه در این لحظه ثبت سفارش مقدور نیست"
+
+#~ msgid "You need select event"
+#~ msgstr "شما باید یک رویداد انتخاب کنید"
+
+#~ msgid "This event not available for registration"
+#~ msgstr "این رویداد برای ثبت نام در دسترس نیست"
+
+#~ msgid "This event do not have enough capacity"
+#~ msgstr "این رویداد ظرفیت کافی برای ثبت نام ندارد"
+
+#~ msgid "Order module not installed"
+#~ msgstr "ماژول سفارش ثبت نشده است"
+
+#~ msgid "Subtitle"
+#~ msgstr "عنوان دوم"
+
+#~ msgid "slug"
+#~ msgstr "اسلاگ"
+
+#~ msgid "Summary"
+#~ msgstr "خلاصه"
+
+#~ msgid "Description"
+#~ msgstr "توضیحات"
+
+#~ msgid "Main options"
+#~ msgstr "گزینه های اصلی"
+
+#~ msgid "Topic"
+#~ msgstr "شاخه"
+
+#~ msgid "Main topic"
+#~ msgstr "شاخه اصلی"
+
+#~ msgid "Just use for breadcrumbs and mobile apps"
+#~ msgstr "فقط برای ناوبری و نرم افزار موبایل استفاده می شود"
+
+#~ msgid "Remove image"
+#~ msgstr "حذف تصویر"
+
+#~ msgid "Image"
+#~ msgstr "تصویر"
+
+#~ msgid "Address"
+#~ msgstr "آدرس"
+
+#~ msgid "Organizer name"
+#~ msgstr "نام سازمان دهنده"
+
+#~ msgid "Organizer Website"
+#~ msgstr "وب سایت سازمان دهنده"
+
+#~ msgid "Offer url"
+#~ msgstr "لینک خرید"
+
+#~ msgid "Registration options"
+#~ msgstr "گزینه های ثبت نام داخلی"
+
+#~ msgid "Registration details/requirements"
+#~ msgstr "توضیحات ثبت نام"
+
+#~ msgid "Minimum Price"
+#~ msgstr "حداقل قیمت"
+
+#~ msgid "Register online?"
+#~ msgstr "ثبت نام آنلاین؟"
+
+#~ msgid "Capacity"
+#~ msgstr "ظرفیت"
+
+#~ msgid "Registration type"
+#~ msgstr "نوع ثبت نام"
+
+#~ msgid "Discount code"
+#~ msgstr "کد تخفیف"
+
+#~ msgid "Pay full price"
+#~ msgstr "پرداخت هزینه کامل"
+
+#~ msgid "Time options"
+#~ msgstr "گزینه های زمان"
+
+#~ msgid "Time start"
+#~ msgstr "زمان شروع"
+
+#~ msgid "Time end"
+#~ msgstr "زمان پایان"
+
+#~ msgid "Guide options"
+#~ msgstr "گزینه های ماژول Guide"
+
+#~ msgid "Owner"
+#~ msgstr "سازنده"
+
+#~ msgid "Category"
+#~ msgstr "شاخه"
+
+#~ msgid "Location"
+#~ msgstr "منطقه"
+
+#~ msgid "Item"
+#~ msgstr "اماکن"
+
+#~ msgid "SEO options"
+#~ msgstr "گزینه های سئو"
+
+#~ msgid "SEO Title"
+#~ msgstr "عنوان متا ( Meta Title )"
+
+#~ msgid "SEO Keywords"
+#~ msgstr "کلمات کلیدی متا ( Meta Keywords ) "
+
+#~ msgid "SEO Description"
+#~ msgstr "توضیح متا ( Meta Description ) "
+
+#~ msgid "Register to the event"
+#~ msgstr "ثبت نام در رویداد"
+
+#~ msgid "List of events"
+#~ msgstr "فهرست رویداد ها"
+
+#~ msgid "Remove image event in process"
+#~ msgstr "حذف تصویر رویداد در حال اجرا است"
+
+#~ msgid "List of all orders"
+#~ msgstr "فهرست تمام رویداد ها"
+
+#~ msgid "Name"
+#~ msgstr "نام"
+
+#~ msgid "Public code"
+#~ msgstr "کد عمومی"
+
+#~ msgid "Private code"
+#~ msgstr "کد خصوصی"
+
+#~ msgid "Number"
+#~ msgstr "تعداد"
+
+#~ msgid "Total"
+#~ msgstr "مجموع"
+
+#~ msgid "Event"
+#~ msgstr "رویداد"
+
+#~ msgid "Close"
+#~ msgstr "بستن"
+
+#~ msgid "Import events from guide module"
+#~ msgstr "انتقال رویداد ها از ماژول معرفی اماکن"
+
+#~ msgid "From"
+#~ msgstr "از"
+
+#~ msgid "to"
+#~ msgstr "تا"
+
+#~ msgid "Participate/Register to %s"
+#~ msgstr "شرکت / ثبت نام در %s"
+
+#~ msgid "Key Event Elements"
+#~ msgstr "اطلاعات اصلی رویداد"
+
+#~ msgid "On"
+#~ msgstr "در"
+
+#~ msgid "Related locations"
+#~ msgstr "منطقه های مرتبط"
+
+#~ msgid "Related items"
+#~ msgstr "اماکن مرتبط"
+
+#~ msgid "Share if you like"
+#~ msgstr "اشتراک گذاری در شبکه های اجتماعی"
+
+#~ msgid "New event"
+#~ msgstr "رویداد جدید"
+
+#~ msgid "Start"
+#~ msgstr "آغاز"
+
+#~ msgid "End"
+#~ msgstr "پایان"
+
+#~ msgid "Code"
+#~ msgstr "کد"
+
+#~ msgid "Details of %s"
+#~ msgstr "جزئیات رویداد %s"
+
+#~ msgid "Register on"
+#~ msgstr "تاریخ ثبت نام"
+
+#~ msgid "Event date"
+#~ msgstr "تاریخ پایان"
+
+#~ msgid "Visit"
+#~ msgstr "بازدید"
+
+#~ msgid "Category list"
+#~ msgstr "فهرست شاخه ها"
+
+#~ msgid "Mian options"
+#~ msgstr "گزینه های اصلی"
+
+#~ msgid "Date"
+#~ msgstr "تاریخ"
+
+#~ msgid "Viewed"
+#~ msgstr "دیده شده"
+
+#~ msgid "Times"
+#~ msgstr "بار"
+
+#~ msgid "Related categories"
+#~ msgstr "بخش های مرتبط"

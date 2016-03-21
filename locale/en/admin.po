@@ -1,0 +1,121 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: support\n"
+"POT-Creation-Date: 2016-03-21 14:05+0430\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _a;_t\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: config/block.php:15
+msgid "Recent feeds"
+msgstr ""
+
+#: config/block.php:16
+msgid "Recent websites feeds"
+msgstr ""
+
+#: config/block.php:21
+msgid "Number"
+msgstr ""
+
+#: config/block.php:28
+msgid "Show time"
+msgstr ""
+
+#: config/block.php:35
+msgid "Show source"
+msgstr ""
+
+#: config/block.php:42
+msgid "Show hits"
+msgstr ""
+
+#: config/block.php:49
+msgid "Show description"
+msgstr ""
+
+#: config/block.php:56
+msgid "Show more link"
+msgstr ""
+
+#: config/block.php:63
+msgid "Use block effects"
+msgstr ""
+
+#: config/block.php:64
+msgid "Use block effects or set custom effect on theme"
+msgstr ""
+
+#: config/comment.php:15
+msgid "Feed reader comments"
+msgstr ""
+
+#: config/config.php:16
+msgid "Admin"
+msgstr ""
+
+#: config/config.php:20
+msgid "Cron"
+msgstr ""
+
+#: config/config.php:24
+msgid "View"
+msgstr ""
+
+#: config/config.php:28
+msgid "Social"
+msgstr ""
+
+#: config/config.php:36 config/config.php:53
+msgid "Perpage"
+msgstr ""
+
+#: config/config.php:45
+msgid "Cron password"
+msgstr ""
+
+#: config/config.php:61
+msgid "Social sharing items"
+msgstr ""
+
+#: config/config.php:75
+msgid "Description for index page"
+msgstr ""
+
+#: config/module.php:16
+msgid "Feed reader"
+msgstr ""
+
+#: config/module.php:17
+msgid "Feed reader system"
+msgstr ""
+
+#: config/navigation.php:17 config/page.php:32 config/permission.php:27
+msgid "Source"
+msgstr ""
+
+#: config/navigation.php:27 config/page.php:37 config/permission.php:31
+msgid "List of feeds"
+msgstr ""
+
+#: config/page.php:17
+msgid "Index page"
+msgstr ""
+
+#: config/page.php:23
+msgid "Feed"
+msgstr ""
+
+#: config/permission.php:17
+msgid "Global public resource"
+msgstr ""

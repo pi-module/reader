@@ -1,0 +1,175 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: support\n"
+"POT-Creation-Date: 2016-03-21 14:08+0430\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _a;_t\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: config/block.php:15
+msgid "Recent feeds"
+msgstr "خوارک خوان"
+
+#: config/block.php:16
+msgid "Recent websites feeds"
+msgstr "سیستم نمایش خوارک وب سایت های منتخب"
+
+#: config/block.php:21
+msgid "Number"
+msgstr "تعداد"
+
+#: config/block.php:28
+msgid "Show time"
+msgstr "نمایش زمان"
+
+#: config/block.php:35
+msgid "Show source"
+msgstr "نمایش منبع"
+
+#: config/block.php:42
+msgid "Show hits"
+msgstr "نمایش بازدید"
+
+#: config/block.php:49
+msgid "Show description"
+msgstr "نمایش توضیحات"
+
+#: config/block.php:56
+msgid "Show more link"
+msgstr "نمایش لینک ادامه"
+
+#: config/block.php:63
+msgid "Use block effects"
+msgstr " استفاده از افکت های بلاک"
+
+#: config/block.php:64
+msgid "Use block effects or set custom effect on theme"
+msgstr "ستفاده از افکت های جاوا اسکریپت یا سی اس اس بلاک یا شخصی سازی آن در قالب"
+
+#: config/comment.php:15
+msgid "Feed reader comments"
+msgstr "نظرات خوارک"
+
+#: config/config.php:16
+msgid "Admin"
+msgstr "بخش مدیریت"
+
+#: config/config.php:20
+msgid "Cron"
+msgstr "کرون جاب"
+
+#: config/config.php:24
+msgid "View"
+msgstr "نمایش"
+
+#: config/config.php:28
+msgid "Social"
+msgstr "شبکه های اجتماعی"
+
+#: config/config.php:36 config/config.php:53
+msgid "Perpage"
+msgstr "تعداد در صفحه"
+
+#: config/config.php:45
+msgid "Cron password"
+msgstr "واژه رمز کرون جاب"
+
+#: config/config.php:61
+msgid "Social sharing items"
+msgstr "موارد اشتراک گذاری در شبکه های اجتماعی"
+
+#: config/config.php:75
+msgid "Description for index page"
+msgstr "متن توضیحات صفحه اول ماژول"
+
+#: config/module.php:16
+msgid "Feed reader"
+msgstr "خوارک خوان"
+
+#: config/module.php:17
+msgid "Feed reader system"
+msgstr "سیستم نمایش خوارک وب سایت های منتخب"
+
+#: config/navigation.php:17 config/page.php:32 config/permission.php:27
+msgid "Source"
+msgstr "منبع"
+
+#: config/navigation.php:27 config/page.php:37 config/permission.php:31
+msgid "List of feeds"
+msgstr "فهرست خوارک ها"
+
+#: config/page.php:17
+msgid "Index page"
+msgstr "صفحه اصلی"
+
+#: config/page.php:23
+msgid "Feed"
+msgstr "خوارک"
+
+#: config/permission.php:17
+msgid "Global public resource"
+msgstr "دسترسی های عمومی"
+
+#~ msgid "Recent events"
+#~ msgstr "رویداد های نزدیک"
+
+#~ msgid "Recent events list"
+#~ msgstr "فهرست رویداد های نزدیک"
+
+#~ msgid "Category"
+#~ msgstr "شاخه"
+
+#~ msgid "Show category"
+#~ msgstr "نمایش شاخه"
+
+#~ msgid "Show price"
+#~ msgstr "نمایش قیمت"
+
+#~ msgid "Show summary"
+#~ msgstr "نمایش خلاصه"
+
+#~ msgid "Event comments"
+#~ msgstr "نظرات رویداد"
+
+#~ msgid "Manage"
+#~ msgstr "مدیریت درج رویداد توسط کاربر"
+
+#~ msgid "Order"
+#~ msgstr "سفارش"
+
+#~ msgid "Use news topics"
+#~ msgstr "استفاده از موضوع های ماژول اخبار"
+
+#~ msgid "Manage event by users"
+#~ msgstr "مدیریت رویداد ها توسط کاربر"
+
+#~ msgid "Auto approval user events"
+#~ msgstr "تایید خودکار رویداد های درج شده توسط کاربر"
+
+#~ msgid "Active order"
+#~ msgstr "فعال سازی ثبت نام در رویداد"
+
+#~ msgid "Event"
+#~ msgstr "رویداد"
+
+#~ msgid "Manage events"
+#~ msgstr "مدیریت رویداد ها"
+
+#~ msgid "List of order"
+#~ msgstr "فهرست سفارش ها"
+
+#~ msgid "Tools"
+#~ msgstr "ابزار"
+
+#~ msgid "Event detail"
+#~ msgstr "جزئیات رویداد"

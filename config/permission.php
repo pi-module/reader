@@ -27,7 +27,7 @@ return array(
             'title' => _a('Source'),
             'access' => array(),
         ),
-        'list' => array(
+        'feed' => array(
             'title' => _a('List of feeds'),
             'access' => array(),
         ),

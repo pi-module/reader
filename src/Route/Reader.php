@@ -55,7 +55,7 @@ class Reader extends Standard
         if (isset($matches['controller']) && isset($parts[0]) && !empty($parts[0])) {
             switch ($matches['controller']) {
                 case 'feed':
-                    $matches['slug'] = $this->decode($parts[0]);
+                    $matches['id'] = intval($parts[1]);
                     break;
 
                 case 'parse':

@@ -23,14 +23,14 @@ return array(
             'controller' => 'source',
             'action' => 'index',
         ),
-        'list' => array(
+        'feed' => array(
             'label' => _a('List of feeds'),
             'permission' => array(
-                'resource' => 'list',
+                'resource' => 'feed',
             ),
             'route' => 'admin',
             'module' => 'reader',
-            'controller' => 'list',
+            'controller' => 'feed',
             'action' => 'index',
         ),
     ),

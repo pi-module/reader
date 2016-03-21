@@ -29,19 +29,10 @@ class ParseController extends ActionController
         // Get password
         if ($password == $config['cron_password']) {
             // Do cron
-            $result = Pi::api('parse', 'reader')->doParse();
-            // return
-            /* return array(
-                'message' => 'Parse finished !',
-                'status'  => 1,
-                'time'    => time(),
-            ); */
-
-            $this->view()->setTemplate('empty');
-            $this->view()->assign('test', $result);
+            return Pi::api('parse', 'reader')->doParse();
         } else {
             return array(
-                'message' => 'Error : password not true!',
+                'message' => _('Error : password not true!'),
                 'status'  => 0,
                 'time'    => time(),
             );

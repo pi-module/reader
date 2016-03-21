@@ -1,0 +1,10 @@
+.feed-single {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.feed-single h2 {
+    padding: 1px;
+    margin: 1px;
+}

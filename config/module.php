@@ -15,7 +15,7 @@ return array(
     'meta' => array(
         'title' => _a('Feed reader'),
         'description' => _a('Feed reader system'),
-        'version' => '0.0.2',
+        'version' => '0.0.3',
         'license' => 'New BSD',
         'logo' => 'image/logo.png',
         'readme' => 'docs/readme.txt',

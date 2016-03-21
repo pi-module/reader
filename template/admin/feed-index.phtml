@@ -1,0 +1,95 @@
+<?php
+$this->css(array(
+    $this->assetModule('css/admin.css'),
+    $this->assetModule('script/system-ui.css', 'system'),
+));
+$this->jQuery();
+$this->js($this->assetModule('script/system-msg.js', 'system'));
+?>
+<div id="feed-list" class="clearfix">
+    <h3><?php _e('List of feeds'); ?></h3>
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th><?php _e('ID'); ?></th>
+            <th><?php _e('Source'); ?></th>
+            <th><?php _e('Title'); ?></th>
+            <th><?php _e('Action'); ?></th>
+        </tr>
+        <?php foreach ($feeds as $feed) { ?>
+            <?php
+            if ($feed['status'] == 1) {
+                $labelClass = 'label-success';
+            } elseif ($feed['status'] == 5) {
+                $labelClass = 'label-danger';
+            } else {
+                $labelClass = 'label-warning';
+            }
+            ?>
+            <tr id="feed-<?php echo $feed['id']; ?>">
+                <td>
+                    <span class="feed-label label <?php echo $labelClass; ?>"><?php echo $this->escape($feed['id']); ?></span>
+                </td>
+                <td><?php echo $this->escape($feed['sourceTitle']); ?></td>
+                <td><?php echo $this->escape($feed['title']); ?></td>
+                <td class="feed-action">
+                    <a target="_blank" class="btn btn-primary btn-xs" title="<?php _e('View'); ?>"
+                       href="<?php echo $this->url('news', array('module' => $module, 'controller' => 'feed', 'id' => $this->escape($feed['id']))); ?>"><i
+                            class="fa fa-eye"></i> <?php _e('View'); ?></a>
+                    <?php if ($feed['status'] == 1) { ?>
+                        <button id="button-<?php echo $feed['id']; ?>" type="button" class="btn btn-warning btn-xs feed-status"
+                                data-toggle="button"
+                                data-link="<?php echo $this->url('', array('action' => 'ajax', 'id' => $feed['id'], 'status' => '2')); ?>">
+                            <i class="fa fa-times"></i></button>
+                    <?php } else { ?>
+                        <button id="button-<?php echo $feed['id']; ?>" type="button" class="btn btn-success btn-xs feed-status"
+                                data-toggle="button"
+                                data-link="<?php echo $this->url('', array('action' => 'ajax', 'id' => $feed['id'], 'status' => '1')); ?>">
+                            <i class="fa fa-check"></i></button>
+                    <?php } ?>
+                    <?php if ($feed['status'] != 5) { ?>
+                        <button id="button-<?php echo $feed['id']; ?>" type="button" class="btn btn-danger btn-xs feed-delete"
+                                data-toggle="button"
+                                data-link="<?php echo $this->url('', array('action' => 'ajax', 'id' => $feed['id'], 'status' => '5')); ?>">
+                            <i class="fa fa-trash"></i></button>
+                    <?php } ?>
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+    <div class="paginator">
+        <?php echo $this->paginationControl($paginator, 'Sliding', 'paginator.phtml'); ?>
+    </div>
+    <p>
+        <span class="label label-success"><?php _e('Published'); ?></span>
+        <span class="label label-warning"><?php _e('Pending review'); ?></span>
+        <span class="label label-danger"><?php _e('Trash'); ?></span>
+    </p>
+</div>
+<script type="text/javascript">
+    (function ($) {
+        $("#feed-list").on("click", ".feed-action button", function () {
+            systemMessage.wait("<?php _e('Update feed status in process'); ?>");
+            $.getJSON($(this).attr("data-link")).done(function (result) {
+                if (result.ajaxStatus == 1) {
+                    if (result.feedStatus == 1) {
+                        var buttonClass = 'btn btn-warning btn-xs feed-status';
+                        var buttonIClass = 'fa fa-times';
+                        var labelClass = 'feed-label label label-success';
+                    } else if (result.feedStatus == 5) {
+                        $('#feed-' + result.id).slideUp('fast');
+                    } else {
+                        var buttonClass = 'btn btn-success btn-xs feed-status';
+                        var buttonIClass = 'fa fa-check';
+                        var labelClass = 'feed-label label label-warning';
+                    }
+                    $('#feed-' + result.id + ' .feed-status').attr('class', buttonClass);
+                    $('#feed-' + result.id + ' .feed-status i').attr('class', buttonIClass);
+                    $('#feed-' + result.id + ' .feed-label').attr('class', labelClass);
+                    systemMessage.succ(result.message);
+                } else {
+                    systemMessage.fail(result.message);
+                }
+            });
+        });
+    })(jQuery)
+</script>

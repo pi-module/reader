@@ -14,16 +14,18 @@ namespace Module\Reader\Api;
 
 use Pi;
 use Pi\Application\Api\AbstractApi;
+use Zend\Json\Json;
 
 /*
- * Pi::api('feed', 'reader')->getFeed($parameter, $type);
+ * Pi::api('feed', 'reader')->getFeed($id);
  * Pi::api('feed', 'reader')->getFeedList();
+ * Pi::api('feed', 'reader')->canonizeFeed($feed);
  */
 class Feed extends AbstractApi
 {
-    public function getFeed($parameter, $type = 'id')
+    public function getFeed($id)
     {
-        $feed = Pi::model('feed', $this->getModule())->find($parameter, $type);
+        $feed = Pi::model('feed', $this->getModule())->find($id);
         $feed = $this->canonizeFeed($feed);
         return $feed;
     }
@@ -43,7 +45,17 @@ class Feed extends AbstractApi
         }
         // object to array
         $feed = $feed->toArray();
-
+        // Set time
+        $feed['time_create_view'] = _date($feed['time_create']);
+        // Set feed url
+        $feed['feedUrl'] = Pi::url(Pi::service('url')->assemble('blog', array(
+            'module' => $this->getModule(),
+            'controller' => 'feed',
+            'id' => $feed['id'],
+        )));
+        // Set date_modified
+        $feed['date_modified'] = Json::decode($feed['date_modified'], true);
+        // return feed
         return $feed;
     }
 }

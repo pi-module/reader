@@ -40,6 +40,19 @@ class SourceController extends ActionController
         // Make list
         foreach ($rowSet as $row) {
             $list[$row->id] = $row->toArray();
+            $list[$row->id]['time'] = $row->time_parse_last + $row->time_parse_period;
+            if ($list[$row->id]['time'] > time()) {
+                $list[$row->id]['delay'] = 0;
+            } else {
+                $delay = time() - $list[$row->id]['time'];
+                if ($delay < 3600) {
+                    $list[$row->id]['delay'] = sprintf(__('Delayed %s min'), intval($delay / 60));
+                } elseif ($delay < 86400) {
+                    $list[$row->id]['delay'] = sprintf(__('Delayed %s hours'), intval($delay / 3600));
+                } else {
+                    $list[$row->id]['delay'] = sprintf(__('Delayed %s days'), intval($delay / 86400));
+                }
+            }
         }
         // Set view
         $this->view()->assign('list', $list);

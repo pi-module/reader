@@ -29,7 +29,7 @@ class Parse extends AbstractApi
     {
         // Set result
         $result = array(
-            'message' => 'Feed update',
+            'message' => __('All Feed sources update successfully.'),
             'status' => 1,
             'time' => time(),
         );
@@ -57,7 +57,7 @@ class Parse extends AbstractApi
                     $rss = ZendReader::import($source->link);
                 } catch (ZendRuntimeException $e) {
                     // feed import failed
-                    $result['message'] = sprintf('Exception caught importing feed: %s', $e->getMessage());
+                    $result['message'] = sprintf(__('Exception caught importing feed: %s'), $e->getMessage());
                     $result['status'] = 0;
                     return $result;
                     exit;
@@ -82,10 +82,16 @@ class Parse extends AbstractApi
                 foreach ($rss as $entry) {
                     $feed = Pi::api('feed', 'reader')->getFeed($entry->getLink(), 'link');
                     if (empty($feed)) {
+                        // Set description
+                        $description = $entry->getDescription();
+                        $description = _strip($description);
+                        $description = strtolower(trim($description));
+                        $description = preg_replace('/[\s]+/', ' ', $description);
+                        // Update row
                         $row = Pi::model('feed', $this->getModule())->createRow();
                         $row->title = _escape($entry->getTitle());
                         $row->link = _escape($entry->getLink());
-                        $row->description = _escape($entry->getDescription());
+                        $row->description = $description;
                         $row->date_modified = Json::encode($entry->getDateModified());
                         $row->status = 1;
                         $row->time_create = time();

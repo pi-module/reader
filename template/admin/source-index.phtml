@@ -1,5 +1,12 @@
-<?php $this->css($this->assetModule('css/admin.css')); ?>
-<div class="clearfix">
+<?php
+$this->css(array(
+    $this->assetModule('css/admin.css'),
+    $this->assetModule('script/system-ui.css', 'system'),
+));
+$this->jQuery();
+$this->js($this->assetModule('script/system-msg.js', 'system'));
+?>
+<div id="source-list" class="clearfix">
     <div class="alert alert-danger">
         <h2><?php _e('Setup guide'); ?></h2>
         <p><?php _e('For use feed reader system, first you need setup some rss feed url as source, after that setup cron job on your server by below link or comment to parse feed urls and get new entry ! each feed have update period, than you can setup cron time by minimum update period'); ?></p>
@@ -14,16 +21,22 @@
             <input type="email" class="form-control" id="cronCommand" value="GET <?php echo $this->escape($cronUrl); ?>">
         </div>
     </div>
-    <p>
-        <a class="btn btn-primary" title="<?php _e('Add source'); ?>"
+    <p class="clearfix">
+        <a class="btn btn-primary pull-left" title="<?php _e('Add source'); ?>"
            href="<?php echo $this->url('', array('controller' => 'source', 'action' => 'update')); ?>"><i
                 class="fa fa-folder-open"></i> <?php _e('Add source'); ?></a>
+        <button class="btn btn-success pull-right feed-update"
+                data-toggle="button"
+                data-link="<?php echo $this->escape($cronUrl); ?>">
+            <i class="fa fa-cog"></i> <?php _e('Update all feeds'); ?>
+        </button>
     </p>
     <h3><?php _e('List of sources'); ?></h3>
     <table class="table table-striped table-bordered table-condensed">
         <tr>
             <th><?php _e('ID'); ?></th>
             <th><?php _e('Title'); ?></th>
+            <th><?php _e('Last update'); ?></th>
             <th><?php _e('Action'); ?></th>
         </tr>
         <?php foreach ($list as $source) { ?>
@@ -42,6 +55,20 @@
                 </td>
                 <td><?php echo $this->escape($source['title']); ?></td>
                 <td>
+                    <uL class="list-inline">
+                        <?php if ($source['time_parse_last'] == 0) { ?>
+                            <li><span class="label label-danger"><?php _e('Never'); ?></span></li>
+                        <?php } else { ?>
+                            <?php if ($source['time'] > time()) { ?>
+                                <li><span class="label label-success"><?php _e('Updated'); ?></span></li>
+                            <?php } else { ?>
+                                <li><span class="label label-warning"><?php echo $this->escape($source['delay']); ?></span></li>
+                            <?php } ?>
+                            <li><?php echo _date($source['time_parse_last']); ?></li>
+                        <?php } ?>
+                    </uL>
+                </td>
+                <td>
                     <a class="btn btn-primary" title="<?php _e('Edit'); ?>"
                        href="<?php echo $this->url('', array('action' => 'update', 'id' => $source['id'])); ?>"><i
                             class="fa fa-edit"></i> <?php _e('Edit'); ?></a>
@@ -50,3 +77,17 @@
         <?php } ?>
     </table>
 </div>
+<script type="text/javascript">
+    (function ($) {
+        $("#source-list").on("click", ".feed-update", function () {
+            systemMessage.wait("<?php _e('Update feeds in process'); ?>");
+            $.getJSON($(this).attr("data-link")).done(function (result) {
+                if (result.status == 1) {
+                    systemMessage.succ(result.message);
+                } else {
+                    systemMessage.fail(result.message);
+                }
+            });
+        });
+    })(jQuery)
+</script>

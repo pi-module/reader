@@ -35,8 +35,8 @@ return array(
         ),
         array(
             'title' => _a('List of feeds'),
-            'controller' => 'list',
-            'permission' => 'list',
+            'controller' => 'feed',
+            'permission' => 'feed',
         ),
     ),
 );

@@ -1,7 +1,19 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: voltan
- * Date: 3/19/16
- * Time: 11:12 AM
- */
+<?php $this->css($this->assetModule('css/front.css')); ?>
+<div class="clearfix feed-single">
+    <div class="page-header clearfix">
+        <h1><?php echo $this->escape($feed['title']); ?></h1>
+    </div>
+    <div class="feed-single-information small">
+        <ul class="clearfix list-inline feed-time">
+            <li><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
+            <li><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
+            <li><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
+        </ul>
+    </div>
+    <div class="feed-single-summery clearfix p-summary">
+        <?php echo $feed['description']; ?>
+    </div>
+    <div class="feed-single-link">
+        <i class="fa fa-external-link"></i> <a target="_blank" title="<?php echo $this->escape($feed['title']); ?>" href="<?php echo $this->escape($feed['link']); ?>"><?php echo $this->escape($feed['link']); ?></a>
+    </div>
+</div>

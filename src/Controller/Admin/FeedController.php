@@ -10,14 +10,14 @@
 /**
  * @author Hossein Azizabadi <azizabadi@faragostaresh.com>
  */
-namespace Module\Reader\Controller\Front;
+namespace Module\Reader\Controller\Admin;
 
 use Pi;
 use Pi\Mvc\Controller\ActionController;
 use Pi\Paginator\Paginator;
 use Zend\Db\Sql\Predicate\Expression;
 
-class IndexController extends ActionController
+class FeedController extends ActionController
 {
     public function indexAction()
     {
@@ -35,14 +35,14 @@ class IndexController extends ActionController
         }
         // Get feed
         $feeds = array();
-        $where = array('status' => 1);
-        $order = array('time_create DESC', 'id DESC');
-        $limit = intval($this->config('view_perpage'));
-        $offset = (int)($page - 1) * $this->config('view_perpage');
+        $where = array('status' => array(1, 2, 3, 4));
+        $order = array('id DESC', 'time_create DESC');
+        $limit = intval($this->config('admin_perpage'));
+        $offset = (int)($page - 1) * $this->config('admin_perpage');
         $select = $this->getModel('feed')->select()->where($where)->order($order)->offset($offset)->limit($limit);
         $rowSet = $this->getModel('feed')->selectWith($select);
         foreach ($rowSet as $row) {
-            $feeds[$row->id] = Pi::api('feed', 'reader')->canonizeFeed($row);
+            $feeds[$row->id] = $row->toArray();
             $feeds[$row->id]['sourceTitle'] = $source[$row->source]['title'];
         }
         // Set paginator
@@ -57,14 +57,47 @@ class IndexController extends ActionController
             'route' => $this->getEvent()->getRouteMatch()->getMatchedRouteName(),
             'params' => array_filter(array(
                 'module' => $this->getModule(),
-                'controller' => 'index',
+                'controller' => 'feed',
                 'action' => 'index',
             )),
         ));
         // Set view
-        $this->view()->setTemplate('feed-list');
+        $this->view()->setTemplate('feed-index');
         $this->view()->assign('feeds', $feeds);
         $this->view()->assign('paginator', $paginator);
         $this->view()->assign('config', $config);
+    }
+
+    public function ajaxAction()
+    {
+        // Get id and status
+        $id = $this->params('id');
+        $status = $this->params('status');
+        $return = array();
+        // set product
+        $feed = $this->getModel('feed')->find($id);
+        // Check
+        if ($feed && in_array($status, array(1, 2, 3, 4, 5))) {
+            // Accept
+            $feed->status = $status;
+            // Save
+            if ($feed->save()) {
+                $return['message'] = sprintf(__('%s set status successfully'), $feed->title);
+                $return['ajaxStatus'] = 1;
+                $return['id'] = $feed->id;
+                $return['feedStatus'] = $feed->status;
+            } else {
+                $return['message'] = sprintf(__('Error in set status for %s feed'), $feed->title);
+                $return['ajaxStatus'] = 0;
+                $return['id'] = 0;
+                $return['feedStatus'] = $feed->status;
+            }
+        } else {
+            $return['message'] = __('Please select feed');
+            $return['ajaxStatus'] = 0;
+            $return['id'] = 0;
+            $return['feedStatus'] = 0;
+        }
+        return $return;
     }
 }

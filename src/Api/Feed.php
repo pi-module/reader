@@ -48,7 +48,7 @@ class Feed extends AbstractApi
         // Set time
         $feed['time_create_view'] = _date($feed['time_create']);
         // Set feed url
-        $feed['feedUrl'] = Pi::url(Pi::service('url')->assemble('blog', array(
+        $feed['feedUrl'] = Pi::url(Pi::service('url')->assemble('reader', array(
             'module' => $this->getModule(),
             'controller' => 'feed',
             'id' => $feed['id'],

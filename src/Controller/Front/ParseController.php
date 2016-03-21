@@ -32,7 +32,7 @@ class ParseController extends ActionController
             return Pi::api('parse', 'reader')->doParse();
         } else {
             return array(
-                'message' => _('Error : password not true!'),
+                'message' => __('Error : password not true!'),
                 'status'  => 0,
                 'time'    => time(),
             );

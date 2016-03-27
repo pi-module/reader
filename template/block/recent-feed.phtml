@@ -5,19 +5,16 @@
                 <div class="feed-single clearfix h-feed">
                     <div class="feed-single-title p-name">
                         <h3 class="clearfix" itemprop="headline">
-                            <?php switch($block['link-type']) { ?>
-                                <?php  case 'external':  ?>
-                                    <a rel="nofollow" title="<?php echo $this->escape($feed['title']); ?>"
-                                       href="<?php echo $this->escape($feed['link']); ?>">
-                                        <?php echo $this->escape($feed['title']); ?>
-                                    </a>
-                                <?php break; ?>
-                                <?php  case 'internal':  ?>
-                                    <a title="<?php echo $this->escape($feed['title']); ?>"
-                                       href="<?php echo $this->escape($feed['feedUrl']); ?>">
-                                        <?php echo $this->escape($feed['title']); ?>
-                                    </a>
-                                <?php break; ?>
+                            <?php if ($block['link-type'] == 'external') { ?>
+                                <a target="_blank" rel="nofollow" title="<?php echo $this->escape($feed['title']); ?>"
+                                   href="<?php echo $this->escape($feed['link']); ?>">
+                                    <?php echo $this->escape($feed['title']); ?>
+                                </a>
+                            <?php } else { ?>
+                                <a title="<?php echo $this->escape($feed['title']); ?>"
+                                   href="<?php echo $this->escape($feed['feedUrl']); ?>">
+                                    <?php echo $this->escape($feed['title']); ?>
+                                </a>
                             <?php } ?>
                         </h3>
                     </div>

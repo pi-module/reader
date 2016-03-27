@@ -29,8 +29,8 @@ class Parse extends AbstractApi
     {
         // Set result
         $result = array(
-            'message' => __('All Feed sources update successfully.'),
-            'status' => 1,
+            'message' => '',
+            'status' => 0,
             'time' => time(),
         );
         // Set custom HttpClient
@@ -62,47 +62,62 @@ class Parse extends AbstractApi
                     return $result;
                     exit;
                 }
-                // Get feed date
-                $data = array(
-                    'title' => _escape($rss->getTitle()),
-                    'link' => _escape($rss->getLink()),
-                    'description' => _escape($rss->getDescription()),
-                    'language' => _escape($rss->getLanguage()),
-                    'id' => _escape($rss->getId()),
-                    'feedLink' => _escape($rss->getFeedLink()),
-                    'generator' => _escape($rss->getGenerator()),
-                    'copyright' => _escape($rss->getCopyright()),
-                    'encoding' => _escape($rss->getEncoding()),
-                    'type' => _escape($rss->getType()),
-                    'updatePeriod' => _escape($rss->getUpdatePeriod()),
-                    'dateModified' => Json::encode($rss->getDateModified()),
-                    'image' => Json::encode($rss->getImage()),
-                );
-                // Set feed entry date
-                foreach ($rss as $entry) {
-                    $feed = Pi::api('feed', 'reader')->getFeed($entry->getLink(), 'link');
-                    if (empty($feed)) {
-                        // Set description
-                        $description = $entry->getDescription();
-                        $description = _strip($description);
-                        $description = strtolower(trim($description));
-                        $description = preg_replace('/[\s]+/', ' ', $description);
-                        // Update row
-                        $row = Pi::model('feed', $this->getModule())->createRow();
-                        $row->title = _escape($entry->getTitle());
-                        $row->link = _escape($entry->getLink());
-                        $row->description = $description;
-                        $row->date_modified = Json::encode($entry->getDateModified());
-                        $row->status = 1;
-                        $row->time_create = time();
-                        $row->source = $source->id;
-                        $row->save();
+                // Check rss is not empty
+                if (!empty($rss)) {
+                    // Get feed date
+                    $data = array(
+                        'title' => _escape($rss->getTitle()),
+                        'link' => _escape($rss->getLink()),
+                        'description' => _escape($rss->getDescription()),
+                        'language' => _escape($rss->getLanguage()),
+                        'id' => _escape($rss->getId()),
+                        'feedLink' => _escape($rss->getFeedLink()),
+                        'generator' => _escape($rss->getGenerator()),
+                        'copyright' => _escape($rss->getCopyright()),
+                        'encoding' => _escape($rss->getEncoding()),
+                        'type' => _escape($rss->getType()),
+                        'updatePeriod' => _escape($rss->getUpdatePeriod()),
+                    );
+
+                    /* $dateModified = $rss->getDateModified();
+                    if (isset($dateModified) && !empty($dateModified)) {
+                        $data['dateModified'] = $dateModified;
                     }
+
+                    $image = $rss->getImage();
+                    if (isset($image) && !empty($image)) {
+                        $data['image'] = $image;
+                    } */
+
+                    // Set feed entry date
+                    foreach ($rss as $entry) {
+                        $feed = Pi::api('feed', 'reader')->getFeed($entry->getLink(), 'link');
+                        if (empty($feed)) {
+                            // Set description
+                            $description = $entry->getDescription();
+                            $description = _strip($description);
+                            $description = strtolower(trim($description));
+                            $description = preg_replace('/[\s]+/', ' ', $description);
+                            // Update row
+                            $row = Pi::model('feed', $this->getModule())->createRow();
+                            $row->title = _escape($entry->getTitle());
+                            $row->link = _escape($entry->getLink());
+                            $row->description = $description;
+                            $row->date_modified = Json::encode($entry->getDateModified());
+                            $row->status = 1;
+                            $row->time_create = time();
+                            $row->source = $source->id;
+                            $row->save();
+                        }
+                    }
+                    // Update source date
+                    $source->extra = Json::encode($data);
+                    $source->time_parse_last = time();
+                    $source->save();
+                    //
+                    $result['message'] = __('All Feed sources update successfully.');
+                    $result['status'] = 1;
                 }
-                // Update source date
-                $source->extra = Json::encode($data);
-                $source->time_parse_last = time();
-                $source->save();
             }
         }
         return $result;

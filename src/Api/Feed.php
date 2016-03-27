@@ -17,15 +17,15 @@ use Pi\Application\Api\AbstractApi;
 use Zend\Json\Json;
 
 /*
- * Pi::api('feed', 'reader')->getFeed($id);
+ * Pi::api('feed', 'reader')->getFeed($parameter, $field);
  * Pi::api('feed', 'reader')->getFeedList();
  * Pi::api('feed', 'reader')->canonizeFeed($feed);
  */
 class Feed extends AbstractApi
 {
-    public function getFeed($id)
+    public function getFeed($parameter, $field = 'id')
     {
-        $feed = Pi::model('feed', $this->getModule())->find($id);
+        $feed = Pi::model('feed', $this->getModule())->find($parameter, $field);
         $feed = $this->canonizeFeed($feed);
         return $feed;
     }

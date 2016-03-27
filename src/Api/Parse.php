@@ -54,6 +54,7 @@ class Parse extends AbstractApi
             if (time() > $updateTime) {
                 // import rss feed data
                 $rss = ZendReader::import($source->link);
+                // Set date
                 $data = array(
                     'title' => _escape($rss->getTitle()),
                     'link' => _escape($rss->getLink()),
@@ -67,15 +68,16 @@ class Parse extends AbstractApi
                     'type' => _escape($rss->getType()),
                     'updatePeriod' => _escape($rss->getUpdatePeriod()),
                 );
+                // Check and Set dateModified
                 $dateModified = $rss->getDateModified();
                 if (isset($dateModified) && !empty($dateModified)) {
                     $data['dateModified'] = $dateModified;
                 }
+                // Check and Set image
                 $image = $rss->getImage();
                 if (isset($image) && !empty($image)) {
                     $data['image'] = $image;
                 }
-
                 // Set feed entry date
                 $i = 1;
                 foreach ($rss as $entry) {
@@ -96,9 +98,9 @@ class Parse extends AbstractApi
                     );
                     $i++;
                 }
-
-                // Check entry list and update DB
+                // Chnage sort
                 krsort($entryList);
+                // Check entry list and update DB
                 foreach ($entryList as $entrySingle) {
                     $feed = Pi::model('feed', $this->getModule())->find($entrySingle['link'], 'link');
                     if (!$feed) {
@@ -107,12 +109,10 @@ class Parse extends AbstractApi
                         $row->save();
                     }
                 }
-
                 // Update source date
                 $source->extra = Json::encode($data);
                 $source->time_parse_last = time();
                 $source->save();
-
                 // set result
                 $result['message'] = __('All Feed sources update successfully.');
                 $result['status'] = 1;

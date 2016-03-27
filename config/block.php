@@ -52,6 +52,21 @@ return array(
                 'filter' => 'number_int',
                 'value' => 1,
             ),
+            'link-type' => array(
+                'title' => _a('Link type'),
+                'description' => '',
+                'edit' => array(
+                    'type' => 'select',
+                    'options' => array(
+                        'options' => array(
+                            'internal' => _a('Internal'),
+                            'external' => _a('External'),
+                        ),
+                    ),
+                ),
+                'filter' => 'text',
+                'value' => 'internal',
+            ),
             'show-morelink' => array(
                 'title' => _a('Show more link'),
                 'description' => '',

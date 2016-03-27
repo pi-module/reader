@@ -5,29 +5,39 @@
                 <div class="feed-single clearfix h-feed">
                     <div class="feed-single-title p-name">
                         <h3 class="clearfix" itemprop="headline">
-                            <a title="<?php echo $this->escape($feed['title']); ?>"
-                               href="<?php echo $this->escape($feed['feedUrl']); ?>">
-                                <?php echo $this->escape($feed['title']); ?>
-                            </a>
+                            <?php switch($block['link-type']) { ?>
+                                <?php  case 'external':  ?>
+                                    <a rel="nofollow" title="<?php echo $this->escape($feed['title']); ?>"
+                                       href="<?php echo $this->escape($feed['link']); ?>">
+                                        <?php echo $this->escape($feed['title']); ?>
+                                    </a>
+                                <?php break; ?>
+                                <?php  case 'internal':  ?>
+                                    <a title="<?php echo $this->escape($feed['title']); ?>"
+                                       href="<?php echo $this->escape($feed['feedUrl']); ?>">
+                                        <?php echo $this->escape($feed['title']); ?>
+                                    </a>
+                                <?php break; ?>
+                            <?php } ?>
                         </h3>
                     </div>
                     <div class="feed-single-information small">
                         <ul class="clearfix list-inline">
                             <?php if ($block['show-source']) { ?>
-                            <li><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
+                                <li><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
                             <?php } ?>
                             <?php if ($block['show-time']) { ?>
-                            <li><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
+                                <li><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
                             <?php } ?>
                             <?php if ($block['show-hits']) { ?>
-                            <li><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
+                                <li><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
                             <?php } ?>
                         </ul>
                     </div>
                     <?php if ($block['show-description'] && !empty($feed['description'])) { ?>
-                    <div class="feed-single-summery clearfix p-summary">
-                        <?php echo $feed['description']; ?>
-                    </div>
+                        <div class="feed-single-summery clearfix p-summary">
+                            <?php echo $feed['description']; ?>
+                        </div>
                     <?php } ?>
                 </div>
             <?php } ?>

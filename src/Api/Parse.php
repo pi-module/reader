@@ -52,72 +52,70 @@ class Parse extends AbstractApi
             $updateTime = $source->time_parse_last + $source->time_parse_period;
             // Check can update
             if (time() > $updateTime) {
-                // Read feed list
-                try {
-                    $rss = ZendReader::import($source->link);
-                } catch (ZendRuntimeException $e) {
-                    // feed import failed
-                    $result['message'] = sprintf(__('Exception caught importing feed: %s'), $e->getMessage());
-                    $result['status'] = 0;
-                    return $result;
-                    exit;
+                // import rss feed data
+                $rss = ZendReader::import($source->link);
+                $data = array(
+                    'title' => _escape($rss->getTitle()),
+                    'link' => _escape($rss->getLink()),
+                    'description' => _escape($rss->getDescription()),
+                    'language' => _escape($rss->getLanguage()),
+                    'id' => _escape($rss->getId()),
+                    'feedLink' => _escape($rss->getFeedLink()),
+                    'generator' => _escape($rss->getGenerator()),
+                    'copyright' => _escape($rss->getCopyright()),
+                    'encoding' => _escape($rss->getEncoding()),
+                    'type' => _escape($rss->getType()),
+                    'updatePeriod' => _escape($rss->getUpdatePeriod()),
+                );
+                $dateModified = $rss->getDateModified();
+                if (isset($dateModified) && !empty($dateModified)) {
+                    $data['dateModified'] = $dateModified;
                 }
-                // Check rss is not empty
-                if (!empty($rss)) {
-                    // Get feed date
-                    $data = array(
-                        'title' => _escape($rss->getTitle()),
-                        'link' => _escape($rss->getLink()),
-                        'description' => _escape($rss->getDescription()),
-                        'language' => _escape($rss->getLanguage()),
-                        'id' => _escape($rss->getId()),
-                        'feedLink' => _escape($rss->getFeedLink()),
-                        'generator' => _escape($rss->getGenerator()),
-                        'copyright' => _escape($rss->getCopyright()),
-                        'encoding' => _escape($rss->getEncoding()),
-                        'type' => _escape($rss->getType()),
-                        'updatePeriod' => _escape($rss->getUpdatePeriod()),
+                $image = $rss->getImage();
+                if (isset($image) && !empty($image)) {
+                    $data['image'] = $image;
+                }
+
+                // Set feed entry date
+                $i = 1;
+                foreach ($rss as $entry) {
+                    // Set description
+                    $description = $entry->getDescription();
+                    $description = _strip($description);
+                    $description = strtolower(trim($description));
+                    $description = preg_replace('/[\s]+/', ' ', $description);
+                    // Set entry list data
+                    $entryList[$i] = array(
+                        'title'        => _escape($entry->getTitle()),
+                        'description'  => $description,
+                        'dateModified' => Json::encode($entry->getDateModified()),
+                        'link'         => _escape($entry->getLink()),
+                        'status'       => 1,
+                        'time_create'  => time(),
+                        'source'       => $source->id,
                     );
-
-                    /* $dateModified = $rss->getDateModified();
-                    if (isset($dateModified) && !empty($dateModified)) {
-                        $data['dateModified'] = $dateModified;
-                    }
-
-                    $image = $rss->getImage();
-                    if (isset($image) && !empty($image)) {
-                        $data['image'] = $image;
-                    } */
-
-                    // Set feed entry date
-                    foreach ($rss as $entry) {
-                        $feed = Pi::api('feed', 'reader')->getFeed($entry->getLink(), 'link');
-                        if (empty($feed)) {
-                            // Set description
-                            $description = $entry->getDescription();
-                            $description = _strip($description);
-                            $description = strtolower(trim($description));
-                            $description = preg_replace('/[\s]+/', ' ', $description);
-                            // Update row
-                            $row = Pi::model('feed', $this->getModule())->createRow();
-                            $row->title = _escape($entry->getTitle());
-                            $row->link = _escape($entry->getLink());
-                            $row->description = $description;
-                            $row->date_modified = Json::encode($entry->getDateModified());
-                            $row->status = 1;
-                            $row->time_create = time();
-                            $row->source = $source->id;
-                            $row->save();
-                        }
-                    }
-                    // Update source date
-                    $source->extra = Json::encode($data);
-                    $source->time_parse_last = time();
-                    $source->save();
-                    //
-                    $result['message'] = __('All Feed sources update successfully.');
-                    $result['status'] = 1;
+                    $i++;
                 }
+
+                // Check entry list and update DB
+                krsort($entryList);
+                foreach ($entryList as $entrySingle) {
+                    $feed = Pi::model('feed', $this->getModule())->find($entrySingle['link'], 'link');
+                    if (!$feed) {
+                        $row = Pi::model('feed', $this->getModule())->createRow();
+                        $row->assign($entrySingle);
+                        $row->save();
+                    }
+                }
+
+                // Update source date
+                $source->extra = Json::encode($data);
+                $source->time_parse_last = time();
+                $source->save();
+
+                // set result
+                $result['message'] = __('All Feed sources update successfully.');
+                $result['status'] = 1;
             }
         }
         return $result;

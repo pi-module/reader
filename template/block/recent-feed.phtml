@@ -21,13 +21,13 @@
                     <div class="feed-single-information small">
                         <ul class="clearfix list-inline">
                             <?php if ($block['show-source']) { ?>
-                                <li><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
+                                <li class="list-inline-item"><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
                             <?php } ?>
                             <?php if ($block['show-time']) { ?>
-                                <li><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
+                                <li class="list-inline-item"><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
                             <?php } ?>
                             <?php if ($block['show-hits']) { ?>
-                                <li><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
+                                <li class="list-inline-item"><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
                             <?php } ?>
                         </ul>
                     </div>

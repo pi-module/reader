@@ -4,7 +4,7 @@
         <h1><?php _e('List of feeds'); ?></h1>
     </div>
     <?php if (!empty($config['text_description_index']) && isset($page) && $page == 1) { ?>
-        <div class="well feed-description">
+        <div class="card card-body bg-light mb-3 feed-description">
             <?php echo $config['text_description_index']; ?>
         </div>
     <?php } ?>
@@ -22,9 +22,9 @@
                     </div>
                     <div class="feed-single-information small">
                         <ul class="clearfix list-inline feed-time">
-                            <li><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
-                            <li><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
-                            <li><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
+                            <li class="list-inline-item"><i class="fa fa-rss"></i> <?php echo $this->escape($feed['sourceTitle']); ?></li>
+                            <li class="list-inline-item"><i class="fa fa-clock-o"></i> <?php echo $this->escape($feed['time_create_view']); ?></li>
+                            <li class="list-inline-item"><i class="fa fa-eye"></i> <?php echo $this->escape(_number($feed['hits'])); ?></li>
                         </ul>
                     </div>
                     <div class="feed-single-summery clearfix p-summary">

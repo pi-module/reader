@@ -14,7 +14,7 @@ namespace Module\Reader\Api;
 
 use Pi;
 use Pi\Application\Api\AbstractApi;
-use Zend\Json\Json;
+use Laminas\Json\Json;
 
 /*
  * Pi::api('feed', 'reader')->getFeed($parameter, $field);

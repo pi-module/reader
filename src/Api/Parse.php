@@ -14,10 +14,10 @@ namespace Module\Reader\Api;
 
 use Pi;
 use Pi\Application\Api\AbstractApi;
-use Zend\Feed\Reader\Reader as ZendReader;
-use Zend\Feed\Exception\Reader\RuntimeException as ZendRuntimeException;
-use Zend\Http\Client as HttpClient;
-use Zend\Json\Json;
+use Laminas\Feed\Reader\Reader as LaminasReader;
+use Laminas\Feed\Exception\Reader\RuntimeException as LaminasRuntimeException;
+use Laminas\Http\Client as HttpClient;
+use Laminas\Json\Json;
 
 /*
  * Pi::api('parse', 'reader')->doParse();
@@ -35,12 +35,12 @@ class Parse extends AbstractApi
         );
         // Set custom HttpClient
         $config = array(
-            'adapter' => 'Zend\Http\Client\Adapter\Curl',
+            'adapter' => 'Laminas\Http\Client\Adapter\Curl',
         );
         $client = new HttpClient(null, $config);
-        // Set zend feed reader setting
-        ZendReader::registerExtension('Syndication');
-        ZendReader::setHttpClient($client);
+        // Set Laminas feed reader setting
+        LaminasReader::registerExtension('Syndication');
+        LaminasReader::setHttpClient($client);
         // Get list of source
         $where = array('status' => 1);
         $order = array('id DESC');
@@ -53,7 +53,7 @@ class Parse extends AbstractApi
             // Check can update
             if (time() > $updateTime) {
                 // import rss feed data
-                $rss = ZendReader::import($source->link);
+                $rss = LaminasReader::import($source->link);
                 // Set date
                 $data = array(
                     'title' => _escape($rss->getTitle()),
